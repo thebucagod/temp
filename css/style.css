@@ -88,9 +88,7 @@ h4 {
 
 /* Шапка */
 .site-head {
-  position: sticky;           /* шапка остаётся вверху экрана при прокрутке */
-  top: 0;
-  z-index: 100;
+  position: static;           /* шапка закреплена к верху страницы и прокручивается вместе с ней */
   background: #ab66d23b;      /* #RRGGBBAA: фиолетовый ab66d2, последние два знака 3b = прозрачность около 23% */
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px); /* лёгкая "дымка" за шапкой; не нужна, удалите две строки */
@@ -177,6 +175,31 @@ h4 {
   background: var(--ink);
   color: var(--bg);
   border-color: var(--ink);
+}
+
+/* Кнопка-бургер (на компьютере скрыта, показывается в блоке @media в конце файла) */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;        /* чтобы полоски прижимались к самому краю */
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform .2s, opacity .2s;
 }
 
 /* Главная */
@@ -695,7 +718,7 @@ ol.steps li::before {
 
 .aside {
   position: sticky;
-  top: 120px;                 /* отступ под закреплённой шапкой */
+  top: 20px;
   display: grid;
   gap: 28px;
 }
@@ -1028,4 +1051,39 @@ ol.steps li::before {
     transition: none!important;
   }
 
+}
+
+/* ---------- Шапка на телефоне: меню прячется за бургер ---------- */
+@media (max-width: 720px) {
+  .head-sub {
+    display: none;            /* надпись «Журнал, Казань» скрыта */
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;            /* ссылки скрыты, пока меню не открыто */
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .site-head.is-open .nav {
+    display: flex;
+  }
+
+  /* три полоски превращаются в крестик, когда меню открыто */
+  .site-head.is-open .burger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .site-head.is-open .burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-head.is-open .burger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
