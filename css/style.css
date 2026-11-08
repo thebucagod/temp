@@ -20,26 +20,10 @@
   --on-sun: #10303A;      /* цвет текста на жёлтом */
   --on-sun-text: #FFFFFF; /* цвет текста на кнопке карточки кафе */
 
+  color-scheme: light;    /* всегда светлая тема, независимо от настроек телефона или компьютера */
+
   --f-display: 'Unbounded', 'Arial Black', system-ui, sans-serif;   /* шрифт заголовков */
   --f-body: 'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; /* основной шрифт */
-}
-
-/* Тёмная тема: включается автоматически, если она выбрана в системе посетителя.
-   Если тёмная тема не нужна, удалите этот блок целиком. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0C1A20;
-    --surface: #13262E;
-    --ink: #E6F2F5;
-    --ink-2: #9DB6BE;
-    --line: #25414B;
-    --sea: #5CD6E6;
-    --sea-soft: #12363F;
-    --sun: #FFC94D;
-    --sun-soft: #3A3216;
-    --berry: #FF7B96;
-    color-scheme: dark;
-  }
 }
 
 /* ---------- Основа ---------- */
